@@ -1,0 +1,79 @@
+Inicio
+//Declaración de arreglos
+nombreClientes(100), apellidosClientes(100), cantidades(100), preciosUnitarios(100), totales(100), totales(100), i[0-n], n <-- 0
+
+//Ingreso de datos de múltiples clientes
+repetir
+    Escribir "Ingrese el nombre del cliente:"
+    Leer nombresClientes[n]
+    Escribir "Ingrese el apellido del cliente:"
+    Leer apellidoCliente[n]
+    Escribir "Ingrese la cantidad de trajes a comprar:"
+    Leer cantidades[n]
+    Escribir "Ingrese el precio unitario del traje"
+    Leer preciosUnitarios[n]
+
+    //Cálculo de subtotal
+    subtotal <-- cantidades[n] * preciosUnitarios[n]
+
+    //Cálculo de descuento según cantidad
+    Si cantidades[n] = 1 Entonces
+        descuento <-- 0.10
+    Sino Si cantidades[n] = 2 Entonces
+        descuento <-- 0.20
+    Sino Si cantidades[n] = 3 Entonces
+        descuento <-- 0.40
+    Sino Si cantidades[n] > 3 Entonces
+        descuento <-- 0.60
+    Sino
+        descuento <--0
+    FinSi
+
+   montoDescuento <-- subtotal * descuento
+   totales[n] <-- subtotal - montoDescuento
+
+   Escribir "Cliente: ", nombresClientes[n], " ", apellidosClientes[n]
+   Escribir "Subtotal: ", subtotal
+   Escribir "Descuento aplicado: ", montoDescuento
+   Escribir "Descuento aplicado: , totales[n]"
+
+   n <-- n + 1
+   Escribir "¿Desea registrar otra compra? (s/n):"
+   Leer continuar
+hasta que continuar <> "s"
+
+//Mostrar resumen de compras registradas
+Para i <-- 0 hasta n-1 hacer
+    Escribir "Cliente: ", nombresClientes[i], " ", apellidosCliente[i]
+    Escribir "Cantidad de trajes: ", cantidades[i]
+    Escribir "Precio unitario: ", precios Unitarios[i]
+    Escribir "Total a pagar: ", totales[i]
+    Escribir "-----------------------------"
+FinPara
+
+//Calcular promedio de ventas
+sumaTotales <-- 0
+Para i <-- 0 hasta n-1 hacer
+    sumaTotales <-- sumaTotales + totales[i]
+FinPara
+promedioVentas <-- sumaTotales / n
+Escribir "Promedio de ventas realizadas: ", promedioVentas
+
+//Encontrar  venta m{as alta y m{as baja
+ventaMasAlta <-- totales[0]
+ventaMasBaja <-- totales[0]
+Para i <-- 1 hasta n-1 hacer
+    Si totales[i] > ventaMasAlta Entonces
+        ventaMasAlta <-- totales[i]
+    FinSi
+    Si totales[i] <-- ventaMasBaja Entonces
+        ventaMasBaja <-- totales[i]
+    FinSi
+FinPara
+Escribir "Venta más alta: ", ventaMasAlta
+Escribir "Venta más baja: ", ventaMasBaja
+Fin
+
+
+
+
